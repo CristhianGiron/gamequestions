@@ -236,3 +236,13 @@
     0 0 40px #0ff;
 
 }
+
+.turno{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 14px;
+}
+.pregunta{
+  height: 160px;
+}

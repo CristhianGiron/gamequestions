@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import './RandomNameSlider.css';
 
-const RandomNameSlider = ({ setFunciones, names }) => {
+const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
   const [remainingNames, setRemainingNames] = useState(names);
   const [selectedName, setSelectedName] = useState(null);
   const [isSliding, setIsSliding] = useState(false);
@@ -15,8 +15,8 @@ const RandomNameSlider = ({ setFunciones, names }) => {
       if (remainingNames.length > 0 && !selectedName) {
         const randomIndex = Math.floor(Math.random() * remainingNames.length);
         const name = remainingNames[randomIndex];
-        console.log(name)
         setSelectedName(name);
+        onSendData(name)
         setRemainingNames(remainingNames.filter((_, index) => index !== randomIndex));
       }
       setIsSliding(false);
@@ -52,12 +52,12 @@ const RandomNameSlider = ({ setFunciones, names }) => {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
-  
- // ["Juan Perez", "Maria Lopez", "Carlos Garcia"]
-  
+
+  // ["Juan Perez", "Maria Lopez", "Carlos Garcia"]
+
   return (
     <div className="random-name-slider">
-      
+
       {!selectedName && <div className="slider-container">
         <animated.div
           className="slider"
