@@ -1,0 +1,10 @@
+/* src/Clock.css */
+.clock {
+    font-size: 11px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    font-family: 'Arial', sans-serif;
+}

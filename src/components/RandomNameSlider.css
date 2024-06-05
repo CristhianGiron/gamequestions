@@ -1,0 +1,47 @@
+/* src/RandomNameSlider.css */
+.random-name-slider {
+  text-align: center;
+  margin-top: 75px;
+  max-height: 40px !important;
+}
+
+.slider-container {
+  
+  overflow: hidden;
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+.name {
+  flex: 0 0 100%; /* Esto asegura que cada nombre ocupe el 100% del contenedor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-size: 16px;
+  border-top: 1px solid #0ff;
+  border-bottom: 1px solid #0ff; /* Color del borde neón */
+  box-sizing: border-box;
+  color: #0ff; /* Color del texto neón */
+  text-shadow: 
+    0 0 5px #0ff, 
+    0 0 10px #0ff, 
+    0 0 20px #0ff, 
+    0 0 40px #0ff;
+
+  transition: box-shadow 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.name:hover {
+  text-shadow: 
+    0 0 10px #0ff, 
+    0 0 20px #0ff, 
+    0 0 40px #0ff, 
+    0 0 80px #0ff;
+}
