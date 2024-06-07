@@ -8,8 +8,9 @@ import image4 from '../assets/4.png';
 import image5 from '../assets/reverso.jpg';
 import RandomNameSlider from './RandomNameSlider';
 import Clock from './Clock';
+import Marquee from './Marquee';
 
-const names = [
+/*const names = [
   "KENNY ALEJANDRO ARMIJOS DIAZ",
   "JOHAN GUSTAVO BENITEZ JARAMILLO",
   "EDDY FABIAN BLACIO ASANZA",
@@ -33,13 +34,57 @@ const names = [
   "YAHIR ALEXANDER VELASQUEZ CUENCA",
   "BELY ANGHELINA VITERI CASTRO",
   "JHOSTIN ALEXANDER WISUM TENDEZA",
+];*/
+/**Pruebas */
+const names = [
+  "Juan Carlos Pérez Gómez",
+  "María Luisa García Fernández",
+  "José Antonio Rodríguez López",
+  "Ana Isabel Martínez Sánchez",
+  "Luis Fernando González Ramírez",
+  "Laura Patricia Hernández Díaz",
+  "Carlos Alberto López Jiménez",
+  "Marta Beatriz Fernández Castro",
+  "Pedro Miguel Sánchez Ruiz",
+  "Elena Sofía Ramírez Torres",
+  "Raúl Javier Morales Gutiérrez",
+  "Lucía Adriana Torres Delgado",
+  "Sergio Manuel Ortiz Romero",
+  "Claudia Teresa Vargas Peña",
+  "Ricardo Andrés Cruz Herrera",
+  "Patricia Elena Soto Mendoza",
+  "Francisco Javier Navarro Silva",
+  "Isabel Cristina Ramos Guerrero",
+  "Fernando Luis Castillo Campos",
+  "Gabriela Inés Medina Rivas",
+  "Alberto Jesús Flores Vega",
+  "Verónica Cecilia Reyes Fuentes",
+  "Héctor Daniel Aguilar Morales",
+  "Alejandra María Ortiz Herrera",
+  "Gustavo Enrique Castro Rojas",
+  "Rosa María Vega Márquez",
+  "Manuel Eduardo Romero Paredes",
+  "Sofía Isabel Herrera Cruz",
+  "Diego Alejandro Gutiérrez Núñez",
+  "Valeria Teresa Ríos Hernández"
 ];
 
+const integrantes = [
+
+  "David Pérez.",
+  "Natalia Martínez.",
+  "Jorge Ramírez.",
+  "Carolina Gomez.",
+  "Andrés Torres",
+  "Sara Patricia"
+]
+
+
 const cardsData = [
-  { question: "What is the capital of France?", image: image1 },
-  { question: "What is 2 + 2?", image: image2 },
-  { question: "What is the largest planet in our solar system?", image: image3 },
-  { question: "Who wrote 'To be, or not to be?'", image: image4 }
+  { question: "¿Crees que el acoso sexual es un problema común en las instituciones educativas de Ecuador? ¿Por qué?", image: image1 },
+  { question: "¿Alguna vez has sido testigo o has escuchado sobre casos de acoso sexual en tu institución educativa?", image: image2 },
+  { question: "¿Crees que las políticas actuales son efectivas para prevenir el acoso sexual y proteger a las víctimas? ¿Por qué o por qué no?", image: image3 },
+  { question: "¿Qué impacto crees que tiene el acoso sexual en las víctimas dentro del entorno educativo?", image: image4 }
 ];
 
 const shuffleArray = (array) => {
@@ -64,7 +109,7 @@ const Card = () => {
   const [revealedCards, setRevealedCards] = useState([false, false, false, false]);
   const [shuffledCards, setShuffledCards] = useState([]);
   const [info, setInfo] = useState([]); //indice de tarjeta abierta y persona que la abrio
-  const [mensaje, setMensaje] =useState("")
+  const [mensaje, setMensaje] = useState("")
   useEffect(() => {
     setShuffledCards(shuffleArray(cardsData));
   }, []);
@@ -84,12 +129,12 @@ const Card = () => {
       newRevealedCards[index] = true;
       setRevealedCards(newRevealedCards);
       setMensaje(false)
-    }else{
+    } else {
       setMensaje("Seleccione un participante");
       alert("Seleccione un participante.")
     }
     setData("")
-    
+
 
   };
 
@@ -118,10 +163,11 @@ const Card = () => {
 
   return (
     <div>
+    
       <div className='menu'>
         <div className='options'>
           <button className='reset' onClick={handleReset}>Reset</button>
-          <button className='reset' onClick={manejarClick1}>Random</button>
+          <button className='reset' onClick={manejarClick1}>Random participant</button>
         </div>
 
         <div className='insti'>
@@ -131,7 +177,9 @@ const Card = () => {
           <div>Pedagogía de las ciencias experimentales - Informática</div>
         </div>
       </div>
-      <RandomNameSlider setFunciones={setFunciones} names={names} onSendData={handleData} />
+        <RandomNameSlider setFunciones={setFunciones} names={names} onSendData={handleData} />
+
+
 
       <div className='content'>
         <div style={{ width: '450px', height: '500px', marginTop: '30px' }}>
@@ -140,8 +188,13 @@ const Card = () => {
             Seleccione una tarjeta, lea detenidamente la pregunta y exponga su respuesta. Sea lo más sincero/a posible.
             <br /> <br /> "La sinceridad no consiste en decir todo lo que se piensa, sino en sentir todo lo que se dice." <br /> <br /> <span className='autor'>- Anónimo.</span> <br />
             <span>Integrantes</span> <br /> <br />
-            <span>- Cristhian Girón. <br />- Lady Cabrera. <br />- José Guachizaca. <br />- Erika Salinas. <br />- Mireya Morocho. <br />- Danny Peñafiel. <br />
-            </span>
+
+            {integrantes.map(integrantes => {
+              return (
+                <span>- {integrantes} <br /></span>
+
+              )
+            })}
           </div>
         </div>
         {shuffledCards.map((card, index) => (
@@ -169,15 +222,16 @@ const Card = () => {
                   src={image5}
                   alt=""
                 />
-                <div style={{ position: 'absolute', zIndex: '50' }}>
+                <div style={{ position: 'absolute', zIndex: '50', padding: '10px' }}>
+                  {info.find(i => i.index === index)?.data && (
+                    <div className='turno'>Felicitaciones {formatName(info.find(i => i.index === index).data)} tienes la oportunidad de responder la siguiente pregunta:</div>
+                  )}
                   <div className='pregunta'>
                     {card.question}
                   </div>
 
                   <br />
-                  {info.find(i => i.index === index)?.data && (
-                    <div className='turno'>{formatName(info.find(i => i.index === index).data)}</div>
-                  )}
+
                 </div>
               </div>
             </div>
@@ -186,10 +240,11 @@ const Card = () => {
       </div>
 
       <div className='footer'>
-        <div>
+        <div className='clockc'>
           <Clock />
         </div>
-        <div>
+        <Marquee text='"El único hombre que no se equivoca es el que nunca hace nada." - Theodore Roosevelt' />
+        <div className='copy'>
           Cristhian Giron © All rights reserved 2024
         </div>
       </div>

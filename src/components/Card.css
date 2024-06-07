@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 75vh;
+
 }
 
 .card {
@@ -212,7 +213,14 @@
   justify-content: end;
   text-align: end;
 }
-
+.copy{
+  width: 300px;
+}
+.clockc{
+  width: 300px;
+  display: flex;
+  padding-left: 20px;
+}
 .footer{
   background-color: rgb(25, 58, 57);
   width: 96vw;
@@ -238,11 +246,17 @@
 }
 
 .turno{
-  display: flex;
-  justify-content: center;
-  align-items: end;
+  
+
   font-size: 14px;
+  color: rgb(255, 255, 255); /* Color del texto neón */
+  text-shadow: 
+    0 0 5px #0ff, 
+    0 0 10px rgb(255, 0, 111), 
+    0 0 20px rgb(255, 0, 111), 
+    0 0 40px rgb(255, 0, 111);
 }
 .pregunta{
-  height: 160px;
+  height: 140px;
+  margin-top: 50px;
 }

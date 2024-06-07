@@ -67,7 +67,7 @@ const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
         >
           {names.concat(names).map((name, index) => (
             <div className="name" key={index}>
-              {formatName(name)}
+              {isSliding && formatName(name)}
             </div>
           ))}
         </animated.div>

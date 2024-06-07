@@ -1,0 +1,23 @@
+/* src/components/Marquee.css */
+.marquee {
+    width: 100%; /* Ajusta según sea necesario */
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    padding-left: 100%; /* Comienza fuera de la vista */
+    animation: marquee 10s linear infinite;
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
