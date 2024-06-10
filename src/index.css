@@ -1,7 +1,45 @@
+/* App.css */
+/* Cambia el color de la barra de desplazamiento y el color de fondo del track */
+/* Utiliza ::-webkit-scrollbar para navegadores webkit como Chrome y Safari */
+/* Utiliza scrollbar-color para navegadores que admiten la propiedad */
+
+
+
+/* Para navegadores webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb { 
+  background-image: linear-gradient(to top, #0ff 10%, #006c51 90%);
+  /* Color del thumb (barra de desplazamiento) */
+  border-radius: 6px;
+  /* Borde redondeado del thumb */
+}
+
+::-webkit-scrollbar-track {
+  background: #191A19;
+  /* Color de fondo del track (área del scrollbar sin la barra de desplazamiento) */
+}
+
+/* Para navegadores que admiten la propiedad scrollbar-color */
+/* Puedes ajustar la altura y el ancho según tus preferencias */
+/* La sintaxis es scrollbar-color: thumbColor trackColor; */
+/* thumbColor es el color del thumb (barra de desplazamiento) y trackColor es el color del track */
+/* thumbColor debe ser especificado antes que trackColor */
+/* Asegúrate de agregar también las clases CSS de compatibilidad con navegadores webkit si es necesario */
+/* La siguiente regla es un ejemplo, ajusta los valores según tus preferencias */
+.scrollPersonalize {
+  scrollbar-color: #4caf50 #f1f1f1;
+
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(25, 58, 57);
+  overflow: hidden;
 }
 

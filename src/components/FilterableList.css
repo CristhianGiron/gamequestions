@@ -1,0 +1,69 @@
+/* src/components/FilterableList.css */
+.filterable-list {
+  width: 260px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+
+.controls input {
+  width: 260px;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 5%;
+  border: 1px solid #0ff;
+  height: 32px;
+  background: none;
+  color: #0ff;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+input:focus {
+  outline: 0;
+  box-shadow:
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff,
+    0 0 80px #0ff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #0ff;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: rgb(25, 58, 57);
+  position: absolute;
+  width: 260px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  color: #0ff;
+  font-size: 11px;
+  text-shadow:
+  0 0 10px #0ff,
+  0 0 20px #0ff,
+  0 0 40px #0ff,
+  0 0 80px #0ff;
+}
+
+li {
+  padding: 5px;
+  border-bottom: 1px solid #0ff;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background-color: #22312c;
+  cursor: pointer;
+}

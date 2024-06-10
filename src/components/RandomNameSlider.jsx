@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import './RandomNameSlider.css';
 
-const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
-  const [remainingNames, setRemainingNames] = useState(names);
+const RandomNameSlider = ({ setFunciones, names, onSendData, selectedNames, addSelectedName, nameSelect }) => {
+  const [remainingNames, setRemainingNames] = useState(names.filter(name => !selectedNames.includes(name)));
   const [selectedName, setSelectedName] = useState(null);
   const [isSliding, setIsSliding] = useState(false);
 
@@ -16,8 +16,9 @@ const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
         const randomIndex = Math.floor(Math.random() * remainingNames.length);
         const name = remainingNames[randomIndex];
         setSelectedName(name);
-        onSendData(name)
+        onSendData(name);
         setRemainingNames(remainingNames.filter((_, index) => index !== randomIndex));
+        addSelectedName(name);
       }
       setIsSliding(false);
     },
@@ -34,13 +35,9 @@ const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
     }
   };
 
-  const funcion2 = () => {
-    alert('Función 2 del hijo ejecutada!');
-  };
-
   useEffect(() => {
     if (setFunciones) {
-      setFunciones({ funcion1, funcion2 });
+      setFunciones({ funcion1 });
     }
   }, [setFunciones]);
 
@@ -53,12 +50,9 @@ const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
       .join(' ');
   };
 
-  // ["Juan Perez", "Maria Lopez", "Carlos Garcia"]
-
   return (
     <div className="random-name-slider">
-
-      {!selectedName && <div className="slider-container">
+      {(!nameSelect) && <div className="slider-container">
         <animated.div
           className="slider"
           style={{
@@ -72,9 +66,12 @@ const RandomNameSlider = ({ setFunciones, names, onSendData }) => {
           ))}
         </animated.div>
       </div>}
-      {selectedName && (
+      {nameSelect && (
         <div className="name">
-          {formatName(selectedName)}
+          {formatName(nameSelect)} <span className='please'>
+            _elige una tarjeta porfavor.
+          </span>
+
         </div>
       )}
     </div>
